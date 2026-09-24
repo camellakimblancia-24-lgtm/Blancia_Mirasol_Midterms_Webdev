@@ -2,7 +2,7 @@
     import bcrypt from 'bcryptjs';
     import jwt from 'jsonwebtoken';
     import { pool } from '../db';
-    import { validate } from '../middleware';
+    import { validate } from '../middleware/validate';
     import { loginSchema, registerSchema } from '../schema/auth_schema'
 
 
