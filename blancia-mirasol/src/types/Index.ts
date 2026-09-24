@@ -1,7 +1,4 @@
-import {  Environment, Microservice } from "./index.ts";
-
-
-
+import { Microservice, Environment } from "..";
 
 export interface State {
     user: { id: string; email: string; role: string } | null;

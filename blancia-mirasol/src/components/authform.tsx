@@ -33,14 +33,14 @@ export const AuthForm: React.FC = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <h3>{isLogin ? 'Sign In' : 'Register'}</h3>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'light blue green' }}>{error}</p>}
       
       <Input placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
       <Input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
       
       <Button type="submit">{isLogin ? 'Login' : 'Create Account'}</Button>
       
-      <p style={{ textAlign: 'center', cursor: 'pointer', color: '#ff6347' }} onClick={() => setIsLogin(!isLogin)}>
+      <p style={{ textAlign: 'center', cursor: 'pointer', color: '#4ecbae' }} onClick={() => setIsLogin(!isLogin)}>
         {isLogin ? "Need an account? Register" : "Already have an account? Log in"}
       </p>
     </Form>
