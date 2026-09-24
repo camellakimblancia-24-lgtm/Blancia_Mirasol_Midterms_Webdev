@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { login, register } from '../api/authService';
+
+    import { loginSchema, registerSchema } from '../schema/auth_schema'
 import { Form, Input, Button } from './styles';
 
 export const AuthForm: React.FC = () => {
@@ -18,10 +18,10 @@ export const AuthForm: React.FC = () => {
     
     try {
       if (isLogin) {
-        const { token } = await login(username, password);
+        const { token } = await loginSchema(username, password);
         context.dispatch({ type: 'LOGIN', payload: token });
       } else {
-        await register(username, password);
+        await registerSchema(username, password);
         alert('Registration successful! Please log in.');
         setIsLogin(true);
       }
