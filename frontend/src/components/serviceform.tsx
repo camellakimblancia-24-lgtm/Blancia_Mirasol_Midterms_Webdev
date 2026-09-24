@@ -20,7 +20,7 @@ export const ServiceForm: React.FC = () => {
                 environment,
                 servicestatus
             });
-            dispatch({ type: 'CREATE', payload: newService });
+            dispatch({ type: 'CREATE_SERVICE_SUCCESS', payload: newService });
             setName('')
             setHealthStatus('')
             setServiceStatus('')
