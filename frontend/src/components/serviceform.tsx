@@ -26,7 +26,7 @@ export const ServiceForm: React.FC = () => {
             setServiceStatus('')
         } catch(error) {
             console.error(error);
-            alert('Failed to input !')
+            alert('Failed to input!')
         }
     }
 

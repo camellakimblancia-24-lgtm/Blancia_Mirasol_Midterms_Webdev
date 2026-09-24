@@ -1,5 +1,5 @@
 import { createContext, useReducer, type Dispatch, type ReactNode } from "react";
-import type { Environment, Microservice } from "../index.ts";
+import type { Environment, Microservice } from "../index.js";
 
 interface State {
     service: Microservice[];
@@ -12,8 +12,8 @@ export type Action =
 | { type: 'LOGOUT' }
 | { type: 'SET_ENV_FILTER'; payload: Environment | 'ALL' }
 | { type: 'FETCH_SERVICES_SUCCESS'; payload: Microservice[] }
-| { type: 'CREATE_SERVICE_SUCCESS'; payload: Microservice }
-| { type: 'UPDATE_SERVICE_SUCCESS'; payload: Microservice }
+| { type: 'CREATE_SERVICE_SUCCESS'; payload: Microservice[] }
+| { type: 'UPDATE_SERVICE_SUCCESS'; payload: Microservice[]}
 | { type: 'DELETE_SERVICE_SUCCESS'; payload: string }
 | { type: 'SET_ERROR'; payload: string | null };
 
@@ -30,17 +30,17 @@ const serviceReducer = (state: State, action: Action): State => {
         case "LOGOUT"  :
             return {...state, loading:true , error: null}
         case "SET_ENV_FILTER":
-            return {...state, }
+            return { ...state, loading: true};
         case "FETCH_SERVICES_SUCCESS":
-            return {...state, loading: false, service: action.payload}
+            return {...state, loading: false, service: action.payload};
         case "CREATE_SERVICE_SUCCESS":
-            return {...state,}
+            return {...state, loading: false, service: action.payload};
         case "DELETE_SERVICE_SUCCESS":
-            return {...state}
+            return {...state, loading: false, error: action.payload};
         case "UPDATE_SERVICE_SUCCESS":
-            return {...state}
-        case "SET_ERROR":
-            return {...state}
+            return {...state, loading: true, service: action.payload};
+          case "SET_ERROR":
+            return {...state, loading: false, error: null};
         default:
             return state;
 
